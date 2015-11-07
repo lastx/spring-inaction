@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Stage -->
+    <bean id="theStage"
+        class="com.test.Stage"
+        factory-method="getInstance"
+        init-method="turnOn"
+        destroy-method="turnOff"/>
+
+    <bean id="jack" class="com.test.Skiller">
+        <constructor-arg value="15"/>
+    </bean>
+
+    <bean id="loveStory" class="com.test.LoveStory"/>
+    <bean id="singJack" class="com.test.SingSkiller">
+        <constructor-arg value="#{14+1}"/>
+        <constructor-arg ref="loveStory"/>
+    </bean>
+
+    <!-- 乐器 -->
+    <bean id="piano" class="com.test.Piano" />
+    <bean id="guitar" class="com.test.Guitar" />
+
+    <bean id="Ketty"
+        class="com.test.Instrumentalist">
+        <property name="song" value="#{'Love Story'}" />
+        <property name="instrument" ref="piano" />
+    </bean>
+
+    <bean id="Ketty Copy"
+        class="com.test.Instrumentalist">
+        <property name="song" value="#{Ketty.song?.toUpperCase()}" />
+        <property name="instrument" ref="piano" />
+    </bean>
+
+    <bean id="Hank"
+        class="com.test.OneBand">
+        <property name="instruments">
+            <map>
+                <entry key="PIANO" value-ref="piano" />
+                <entry key="GUITAR" value-ref="guitar" />
+            </map>
+        </property>
+        <property name="instrumentsSummary">
+            <props>
+                <prop key="PIANO">PIANO</prop>
+                <prop key="GUITAR">GUITAR</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

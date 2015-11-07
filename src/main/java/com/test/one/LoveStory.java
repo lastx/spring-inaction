@@ -1,4 +1,6 @@
-package com.test;
+package com.test.one;
+
+import com.test.Song;
 
 public class LoveStory implements Song{
 

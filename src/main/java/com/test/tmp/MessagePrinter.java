@@ -1,4 +1,4 @@
-package com.test;
+package com.test.tmp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,7 @@
-package com.test;
+package com.test.one;
+
+import com.test.Instrument;
+import com.test.Performer;
 
 public class Instrumentalist implements Performer {
 

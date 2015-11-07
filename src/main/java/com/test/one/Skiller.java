@@ -1,4 +1,6 @@
-package com.test;
+package com.test.one;
+
+import com.test.Performer;
 
 public class Skiller implements Performer {
 

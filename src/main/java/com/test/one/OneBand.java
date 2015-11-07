@@ -1,9 +1,12 @@
-package com.test;
+package com.test.one;
 
 import java.util.Enumeration;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
+
+import com.test.Instrument;
+import com.test.Performer;
+
 
 public class OneBand implements Performer {
 

@@ -33,7 +33,7 @@ public class Application {
 
       // /*
       ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-test.xml");
-      Performer preformer = (Performer) ctx.getBean("Hank");
+      Performer preformer = (Performer) ctx.getBean("Ketty2");
       preformer.perform();
       // */
   }

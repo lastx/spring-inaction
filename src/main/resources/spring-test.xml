@@ -22,7 +22,8 @@
     </bean>
 
     <!-- 乐器 -->
-    <bean id="piano" class="com.test.one.Piano" />
+    <bean id="piano" class="com.test.one.Piano"
+        autowire-candidate="false" />
     <bean id="guitar" class="com.test.Guitar" />
 
     <bean id="Ketty"
@@ -52,4 +53,26 @@
             </props>
         </property>
     </bean>
+
+    <!-- 三. 自动装配 -->
+    <!-- 1. byName:变量名字和 bean 对象的 id 一样（当然前提是对象一致） -->
+    <bean id="instrument"
+        class="com.test.one.Piano"
+        autowire-candidate="false" /><!-- 针对 byType 时可以作为非候选 -->
+    <bean id="Ketty1"
+        class="com.test.one.Instrumentalist"
+        autowire="byName">
+        <property name="song" value="#{'Love Story'}" />
+    </bean>
+    <!-- 2. byType: 相同类型的有多个时会抛错，每个bean都有一个 primary 属性，但默认都是true -->
+    <bean id="Ketty2"
+        class="com.test.one.Instrumentalist"
+        autowire="byType">
+        <property name="song" value="#{'Love Story'}" />
+    </bean>
+    <!-- 3. constructor 自动装配（和 byType 一样受限） -->
+    <bean id="singJack1" class="com.test.one.SingSkiller"
+        autowire="constructor">
+    </bean>
+    <!-- 4. autodetect 一直出错-->
 </beans>

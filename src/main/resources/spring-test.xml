@@ -24,7 +24,7 @@
     <!-- 乐器 -->
     <bean id="piano" class="com.test.one.Piano"
         autowire-candidate="false" />
-    <bean id="guitar" class="com.test.Guitar" />
+    <bean id="guitar" class="com.test.one.Guitar" />
 
     <bean id="Ketty"
         class="com.test.one.Instrumentalist">

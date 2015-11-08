@@ -1,4 +1,6 @@
-package com.test;
+package com.test.one;
+
+import com.test.Instrument;
 
 public class Guitar implements Instrument {
 

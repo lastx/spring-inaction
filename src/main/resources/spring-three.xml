@@ -5,6 +5,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
+    <!-- 注意这个重要性！！！ -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
+
     <context:component-scan base-package="com.test" />
 
         <!-- 乐器 -->
@@ -14,5 +17,10 @@
 
     <bean id="Ketty3"
         class="com.test.three.autowired.Instrumentalist3">
+    </bean>
+
+    <!-- 使用 Inject 的方式 -->
+    <bean id="Ketty3-1"
+        class="com.test.three.inject.Instrumentalist3">
     </bean>
 </beans>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <!-- 注意这个重要性！！！ -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
+    <context:component-scan base-package="com.test" />
+
+    <!-- 观众 -->
+    <bean id="audience" class="com.test.p4.Audience" />
+
+    <!-- 乐器 -->
+    <bean id="piano" class="com.test.one.Piano" />
+    <bean id="guitar" class="com.test.one.Guitar" />
+    <bean id="guitar3" class="com.test.three.autowired.Guitar3" />
+    <!-- 使用 Inject 的方式 -->
+    <bean id="Ketty3-1"
+        class="com.test.three.inject.Instrumentalist3">
+    </bean>
+
+    <aop:config>
+        <aop:aspect ref="audience">
+            <aop:pointcut expression="execution(* com.test.Performer.perform(..))"
+                id="performance"/>
+
+            <aop:before method="takeSeates"
+                pointcut-ref="performance"/>
+
+            <aop:before method="turnOffPhones"
+                pointcut-ref="performance"/>
+
+            <aop:after-returning method="applaud"
+                pointcut-ref="performance"/>
+
+            <aop:after-throwing method="refund"
+                pointcut-ref="performance"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
